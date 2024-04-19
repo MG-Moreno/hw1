@@ -111,13 +111,67 @@
 .headers off
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
+DROP TABLE IF EXISTS studios;
+DROP TABLE IF EXISTS actors;
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS movie_actor;
 -- TODO!
 
 -- Create new tables, according to your domain model
+CREATE TABLE studios (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ studio_name TEXT
+);
+
+CREATE TABLE actors (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ actor_name TEXT
+);
+
+CREATE TABLE movies (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ movie_title TEXT,
+ year_released TEXT,
+ mpaa_rating TEXT,
+ model_id_studio INTEGER
+);
+
+CREATE TABLE movie_actor (
+ id INTEGER PRIMARY KEY AUTOINCREMENT, 
+ model_id_movie INTEGER,
+ model_id_actor INTEGER,
+ movie_actor_character TEXT
+);
 -- TODO!
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
+INSERT INTO studios (studio_name)
+VALUES("Warner Bros.");
+
+INSERT INTO actors (actor_name)
+VALUES("Christian Bale");
+INSERT INTO actors (actor_name)
+VALUES("Michael Caine");
+INSERT INTO actors (actor_name)
+VALUES("Liam Neeson");
+INSERT INTO actors (actor_name)
+VALUES("Katie Holmes");
+INSERT INTO actors (actor_name)
+VALUES("Gary Oldman");
+INSERT INTO actors (actor_name)
+VALUES("Heath Ledger");
+INSERT INTO actors (actor_name)
+VALUES("Aaron Eckhart");
+INSERT INTO actors (actor_name)
+VALUES("Maggie Gyllenhaal");
+INSERT INTO actors (actor_name)
+VALUES("Tom Hardy");
+INSERT INTO actors (actor_name)
+VALUES("Joseph Gordon-Levitt");
+INSERT INTO actors (actor_name)
+VALUES("Anne Hathaway");
+
 -- TODO!
 
 -- Prints a header for the movies output
