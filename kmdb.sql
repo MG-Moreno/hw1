@@ -178,6 +178,40 @@ INSERT INTO movies (movie_title, year_released, mpaa_rating, model_id_studio)
 VALUES("The Dark Knight", "2008", "PG-13",1);
 INSERT INTO movies (movie_title, year_released, mpaa_rating, model_id_studio)
 VALUES("The Dark Knight Rises", "2012", "PG-13",1);
+
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(1, 1, "Bruce Wayne");
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(1, 2, "Alfred");
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(1, 3, "Ra's Al Ghul");
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(1, 4, "Rachel Dawes");
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(1, 5, "Commissioner Gordon");
+
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(2, 1, "Bruce Wayne");
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(2, 6, "Joker");
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(2, 7, "Harvey Dent");
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(2, 2, "Alfred");
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(2, 4, "Rachel Dawes");
+
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(3, 1, "Bruce Wayne");
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(3, 5, "Commissioner Gordon");
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(3, 9, "Bane");
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(3, 10, "John Blake");
+INSERT INTO movie_actor (model_id_movie, model_id_actor, movie_actor_character)
+VALUES(3, 11, "Selina Kyle");
+
 -- TODO!
 
 -- Prints a header for the movies output
@@ -187,9 +221,9 @@ VALUES("The Dark Knight Rises", "2012", "PG-13",1);
 
 -- The SQL statement for the movies output
 SELECT movie_title, year_released, mpaa_rating, studios.studio_name
-FROM movies
+FROM movies 
     INNER JOIN studios ON movies.model_id_studio = studios.id
-WHERE movies.model_id_studio = 1;
+;
 -- TODO!
 
 -- Prints a header for the cast output
@@ -200,4 +234,10 @@ WHERE movies.model_id_studio = 1;
 
 
 -- The SQL statement for the cast output
+SELECT movies.movie_title, actors.actor_name, movie_actor.movie_actor_character
+FROM movie_actor
+    INNER JOIN movies ON movies.id = movie_actor.model_id_movie
+    INNER JOIN actors ON actors.id = movie_actor.model_id_actor
+    ;
+
 -- TODO!
