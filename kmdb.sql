@@ -172,6 +172,12 @@ VALUES("Joseph Gordon-Levitt");
 INSERT INTO actors (actor_name)
 VALUES("Anne Hathaway");
 
+INSERT INTO movies (movie_title, year_released, mpaa_rating, model_id_studio)
+VALUES("Batman Begins", "2005", "PG-13",1);
+INSERT INTO movies (movie_title, year_released, mpaa_rating, model_id_studio)
+VALUES("The Dark Knight", "2008", "PG-13",1);
+INSERT INTO movies (movie_title, year_released, mpaa_rating, model_id_studio)
+VALUES("The Dark Knight Rises", "2012", "PG-13",1);
 -- TODO!
 
 -- Prints a header for the movies output
@@ -180,6 +186,10 @@ VALUES("Anne Hathaway");
 .print ""
 
 -- The SQL statement for the movies output
+SELECT movie_title, year_released, mpaa_rating, studios.studio_name
+FROM movies
+    INNER JOIN studios ON movies.model_id_studio = studios.id
+WHERE movies.model_id_studio = 1;
 -- TODO!
 
 -- Prints a header for the cast output
